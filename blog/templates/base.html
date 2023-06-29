@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8"/>
     <title>Blog App</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Niconne&display=swap');
@@ -86,13 +87,58 @@
             background-color: #0056b3;
         }
 
-        .post-title {
+        h2 {
+            position: relative;
+            padding: 0;
+            margin: 0;
+            font-family: "Raleway", sans-serif;
+            font-weight: 300;
             font-size: 40px;
+            color: #080808;
+            -webkit-transition: all 0.4s ease 0s;
+            -o-transition: all 0.4s ease 0s;
+            transition: all 0.4s ease 0s;
+        }
+
+        h2 span {
+            display: block;
+            font-size: 0.5em;
+            line-height: 1.3;
+        }
+
+        h2 em {
+            font-style: normal;
             font-weight: 600;
-            background-image: linear-gradient(to left, #553c9a, #b393d3);
-            color: transparent;
-            background-clip: text;
-            -webkit-background-clip: text;
+        }
+
+        h2 .post-title {
+            font-size: 28px;
+            font-weight: 500;
+            letter-spacing: 0;
+            line-height: 1.5em;
+            padding-bottom: 15px;
+            position: relative;
+        }
+
+        h2 .post-title:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 5px;
+            width: 55px;
+            background-color: #111;
+        }
+
+        h2 .post-title:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 2px;
+            height: 1px;
+            width: 95%;
+            max-width: 255px;
+            background-color: #333;
         }
 
         .post {
@@ -153,24 +199,12 @@
     </style>
 </head>
 <body>
-<header>
-    <h1 class="title">Blog App</h1>
-    {% if user.is_authenticated %}
-        <p>Welcome, {{ user.username }}!</p>
-        <a class="button" href="{% url 'blog:logout' %}">Logout</a>
-    {% else %}
-        <a class="button" href="{% url 'blog:login' %}">Login</a> |
-        <a class="button" href="{% url 'blog:register' %}">Register</a>
-    {% endif %}
-</header>
 
-<main>
-    {% block content %}
-    {% endblock %}
-</main>
+<header><h1>Blog App</h1></header>
 
-<footer>
-    &copy; 2023 Blog App
-</footer>
+<main>{% block content %}{% endblock %}</main>
+
+<footer>&copy; 2023 Blog App</footer>
 </body>
 </html>
+

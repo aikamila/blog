@@ -6,6 +6,8 @@ from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
 from .forms import RegistrationForm
 from django.http import Http404
+from django.core.mail import send_mail
+from django.conf import settings
 
 
 class PostList(ListView):
@@ -88,6 +90,12 @@ def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
+            send_mail(
+                'Creating account on the blog', 
+                'Account created succesfully', 
+                settings.EMAIL_HOST_USER, 
+                [form['email'].value()],
+                fail_silently=False)
             form.save()
             return redirect('blog:registration_success')
     else:

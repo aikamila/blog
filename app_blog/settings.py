@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -24,6 +24,13 @@ SECRET_KEY = 'd*ex+-l(3&m#8h@2v+8+204a2(@6cl=^1k3j6_9y=i@w#c8e(m'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp-mail.outlook.com'
+EMAIL_HOST_USER = "randomixx79@outlook.com"
+EMAIL_HOST_PASSWORD = "asdsdf-sfsva-asdfvf"
 
 ALLOWED_HOSTS = []
 
@@ -119,6 +126,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,'/static/'),
+]
 
 MEDIA_ROOT = BASE_DIR / "uploads/"
 MEDIA_URL = "uploads/"

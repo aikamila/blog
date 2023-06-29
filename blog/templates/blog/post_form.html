@@ -2,6 +2,7 @@
 
 {% block content %}
   <h2>Create Post</h2>
+    <a href="{% url 'blog:post_list' %}" class="button">Go back</a>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}

@@ -1,10 +1,14 @@
-{% extends 'registration/base.html' %}
+{% extends 'registration/../base.html' %}
 
 {% block content %}
-  <h2>Registration</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Register</button>
-  </form>
+    <h2>Registration</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="button" type="submit">Register</button>
+
+        <a href="{% url 'blog:login' %}" class="button">
+            Already signed up? Login
+        </a>
+    </form>
 {% endblock content %}
